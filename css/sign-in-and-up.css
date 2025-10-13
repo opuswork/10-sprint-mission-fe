@@ -22,26 +22,16 @@ body {
 
 }
 
-header {
-    margin: 1 auto;
-    max-width: 640px;
-    height: var(--header-height);
-    display: block;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
+
+.logo-container {
+    text-align: center;
     margin-top: 60px;
     margin-bottom: 60px;
 }
 
-.logo-container {
-    text-align: center;
-
-}
 
 
-
-footer {
+.membership {
     margin: 0 auto;
     max-width: 640px;
     color: #1F2937;
@@ -54,13 +44,13 @@ footer {
     font-size: 14px;
 }
 
-footer a {
+.membership a {
     color: #3182f6;
     text-decoration: underline;
     text-underline-offset: 2px;
 }
 
-.footerLogin {
+.socialLogin {
     background-color: #E6F2FF;
     border-radius: 8px;
     margin: 0 auto;
@@ -115,22 +105,10 @@ input {
     outline: none;
 }
 
-.inputPWDs {
-    position: relative;
-}
-
-.inputPWDs .input {
-    width: 100%;
-    padding: 10px 40px 10px 10px; /* Add paddings */
-    box-sizing: border-box; /* Include paddings and border to width */
-    border: 0px solid #F3F4F6;
-    outline: none;
-}
-
 
 input:focus {
     /* border-color: #3692FF; */
-    outline-color: #3692FF;
+    outline-color: var(--blue);
 }
 
 .fa-eye {
