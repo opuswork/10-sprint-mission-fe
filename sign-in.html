@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panda Sign In</title>
     <link rel="stylesheet" href="./css/sign-in-and-up.css">
+    <script lang="javascript" src="./js/validLogin.js"></script>
 </head>
 <body>
 
@@ -12,16 +13,22 @@
     <div class="logo-container">
         <a href="/"><img class="logo-img" src="./images/Panda_logo-login.svg" alt="판다마켓"></a>
     </div>
-    <form method="post">
+    <form method="post" name="sign-in">
+
         <label for="username">이메일</label>
-        <input id="username" name="email" placeholder="이메일을 입력하세요." required>
+        <input id="username" name="email" placeholder="이메일을 입력하세요.">
+        <div id="emailError" class="error-message"></div>
+
         <label for="password">비밀번호</label>
         <div class="inputPWD">
-            <input id="passwordInput" name="password" type="password" placeholder="비밀번호를 입력하세요." required>
-            <img class="fa-eye" src="./images/fa-eye.svg" alt="비밀번호 보기">
+            <input id="passwordInput" name="password" type="password" placeholder="비밀번호를 입력하세요.">
+            <img id="passwordToggle" class="fa-eye" src="./images/eye-closed.svg" alt="비밀번호 표시/숨김">
         </div>
+        <div id="passwordError" class="error-message"></div>
+
         <button type="submit" aria-label="로그인 하기">로그인</button>
     </form>
+
     <div class="socialLogin">
         간편 로그인하기
         <div class="social-login-button">
