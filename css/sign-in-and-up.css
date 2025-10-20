@@ -163,3 +163,53 @@ input.error {
   display: block;
 }
 
+
+/* Responsive - tablet adjustments */
+@media (max-width: 1199px) {
+  .logo-container {
+      align-items: center;
+      margin-top: 60px;
+      margin-bottom: 60px;
+  }
+
+  img {
+    max-width: 80%;
+  }
+
+
+}
+
+
+
+/* Responsive - mobile adjustments */
+@media (max-width: 743px) {
+    .logo-container {
+        align-items: center;
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    img {
+      max-width: 50%;
+    }
+
+  .socialLogin {
+      background-color: #E6F2FF;
+      border-radius: 8px;
+      margin: 0 auto;
+      max-width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      color: #1F2937;
+      padding: 16px 23px;
+  }
+
+  /* form CSS below */
+  form {
+    margin: 16px auto;
+    max-width: 90%;
+  }
+
+}

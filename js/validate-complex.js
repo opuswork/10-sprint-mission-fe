@@ -57,6 +57,17 @@ function validateForm() {
         hideError('username', 'emailError');
     }
 
+    //닉네임 검증
+    const nickname = document.getElementById('nickname').value;
+    if (!nickname) {
+        showError('nickname', 'nicknameError', '닉네임을 입력해주세요.');
+        isValid = false;
+    } else if (nickname.length < 2) {
+        showError('nickname', 'nicknameError', '닉네임은 2자 이상이어야 합니다.');
+        isValid = false;
+    }
+
+
     // 비밀번호 검증
     const password = document.getElementById('passwordInput').value;
     if (!password) {
@@ -64,6 +75,10 @@ function validateForm() {
         isValid = false;
     } else {
         hideError('passwordInput', 'passwordError');
+    }
+
+    if (!password_confirm) {
+
     }
 
     return isValid;
