@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('No form found');
         return;
     }
-    const isLoginPage = window.location.pathname.includes('sign-in.html');  // set the sign-in.html as a login page
+    const isLoginPage = window.location.pathname.includes('sign-in');  // set the sign-in page as a login page
     console.log('isLoginPage:', isLoginPage, 'pathname:', window.location.pathname);
 
     const emailInput = document.getElementById('username');
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isLoginPage) {
         updateLoginButtonState();
     } else {
-        const submitButton = document.getElementById('button[type="submit"]');
+        const submitButton = document.querySelector('button[type="submit"]');
         if (submitButton) {
             submitButton.disabled = false;
             submitButton.style.opacity = '1';
