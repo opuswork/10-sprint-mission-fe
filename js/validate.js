@@ -26,14 +26,16 @@ function validateEmail(email) { //Email Validation
 function updateLoginButtonState() {     //set the submit button on sign-in.html as disabled until input boxes are filled
     const userid = document.getElementById('username');
     const passwd = document.getElementById('passwordInput');
-    const submitButton = document.querySelector('button[type="submit"]');
-    if (!userid || !passwd || !submitButton) return;
-    const email = userid.value.trim();
-    const password = passwd.value;
-    const enabled = Boolean(email && password);
-    submitButton.disabled = !enabled;   //enabled = form is Valid
-    submitButton.style.opacity = enabled ? '1' : '0.5'; //when the form is not valid, opacity set as half-transparency
-    submitButton.style.cursor = enabled ? 'pointer' : 'not-allowed';
+    const submitButton = document.getElementById('submitButton');
+    if (Boolean(userid && passwd)) {
+        const email = userid.value.trim();
+        const password = passwd.value;
+        const enabled = email && password;  // enable when both fields have values
+
+        submitButton.disabled = !enabled;   //enabled = form is Valid
+        submitButton.style.opacity = enabled ? '1' : '0.5'; //when the form is not valid, opacity set as half-transparency
+        submitButton.style.cursor = enabled ? 'pointer' : 'not-allowed';
+    }
 }
 
 // Validation in Login form
@@ -91,8 +93,8 @@ function validateSignupForm() {
     if (!password) {
         showError('passwordInput', 'passwordError', '비밀번호를 입력해주세요.');
         isValid = false;
-    } else if (password.length < 15 || password.length > 20) {
-        showError('passwordInput', 'passwordError', '비밀번호는 15자 이상 20자 이하여야 합니다.');
+    } else if (password.length < 8 || password.length > 20) {
+        showError('passwordInput', 'passwordError', '비밀번호는 8자 이상 20자 이하여야 합니다.');
         isValid = false;
     } else {
         hideError('passwordInput', 'passwordError');
@@ -186,8 +188,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const password = this.value;
             if (!password) {
                 showError('passwordInput', 'passwordError', '비밀번호를 입력해주세요.');
-            } else if (!isLoginPage && (password.length < 15 || password.length > 20)) {
-                showError('passwordInput', 'passwordError', '비밀번호는 15자 이상 20자 이하여야 합니다.');
+            } else if (!isLoginPage && (password.length < 8 || password.length > 20)) {
+                showError('passwordInput', 'passwordError', '비밀번호는 8자 이상 20자 이하여야 합니다.');
             } else {
                 hideError('passwordInput', 'passwordError');
             }
@@ -199,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Sign-up 전용: 닉네임과 비밀번호 확인 실시간 검증
     if (!isLoginPage && nicknameInput) {
         nicknameInput.addEventListener('blur', function() {
             const nickname = this.value.trim();
