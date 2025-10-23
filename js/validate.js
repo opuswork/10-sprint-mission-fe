@@ -18,25 +18,25 @@ function hideError(inputId, errorId) {
     }
 }
 
-function validateEmail(email) {
+function validateEmail(email) { //Email Validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
-function updateLoginButtonState() {
-    const emailEl = document.getElementById('username');
-    const pwdEl = document.getElementById('passwordInput');
+function updateLoginButtonState() {     //set the submit button on sign-in.html as disabled until input boxes are filled
+    const userid = document.getElementById('username');
+    const passwd = document.getElementById('passwordInput');
     const submitButton = document.querySelector('button[type="submit"]');
-    if (!emailEl || !pwdEl || !submitButton) return;
-    const email = emailEl.value.trim();
-    const password = pwdEl.value;
+    if (!userid || !passwd || !submitButton) return;
+    const email = userid.value.trim();
+    const password = passwd.value;
     const enabled = Boolean(email && password);
-    submitButton.disabled = !enabled;
-    submitButton.style.opacity = enabled ? '1' : '0.5';
+    submitButton.disabled = !enabled;   //enabled = form is Valid
+    submitButton.style.opacity = enabled ? '1' : '0.5'; //when the form is not valid, opacity set as half-transparency
     submitButton.style.cursor = enabled ? 'pointer' : 'not-allowed';
 }
 
-// 로그인 폼에 적용할 유효성 검사
+// Validation in Login form
 function validateLoginForm() {
     let isValid = true;
     const email = document.getElementById('username')?.value.trim() || '';
@@ -44,7 +44,7 @@ function validateLoginForm() {
     if (!email) {
         showError('username', 'emailError', '이메일을 입력해주세요.');
         isValid = false;
-    } else if (!validateEmail(email)) {
+    } else if (!validateEmail(email)) {   //Add (!isLoginPage) in if statement to exclude email validation on Sign-in.html
         showError('username', 'emailError', '올바른 이메일 형식을 입력해주세요.');
         isValid = false;
     } else {
@@ -60,7 +60,7 @@ function validateLoginForm() {
     return isValid;
 }
 
-// 회원가입 폼에 적용할 유효성 검사
+// Validation in Sign-up form
 function validateSignupForm() {
     let isValid = true;
     const email = document.getElementById('username')?.value.trim() || '';
@@ -71,7 +71,7 @@ function validateSignupForm() {
     if (!email) {
         showError('username', 'emailError', '이메일을 입력해주세요.');
         isValid = false;
-    } else if (!validateEmail(email)) { //로그인 페이지엔 이메일 유효성 검사를 제외시키려면 (!isLoginPage)를 조건문에 추가하면 됨.
+    } else if (!validateEmail(email)) {
         showError('username', 'emailError', '올바른 이메일 형식을 입력해주세요.');
         isValid = false;
     } else {
@@ -81,8 +81,8 @@ function validateSignupForm() {
     if (!nickname) {
         showError('nickname', 'nicknameError', '닉네임을 입력해주세요.');
         isValid = false;
-    } else if (nickname.length < 2) {
-        showError('nickname', 'nicknameError', '닉네임은 2자 이상이어야 합니다.');
+    } else if (nickname.length < 4) {
+        showError('nickname', 'nicknameError', '닉네임은 4자 이상이어야 합니다.');
         isValid = false;
     } else {
         hideError('nickname', 'nicknameError');
@@ -132,7 +132,7 @@ function hidePassword(inputId, toggleId) {
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
     if (!form) return;
-    const isLoginPage = window.location.pathname.includes('sign-in.html');
+    const isLoginPage = window.location.pathname.includes('sign-in.html');  // set the sign-in.html as a login page
 
     const emailInput = document.getElementById('username');
     const passwordInput = document.getElementById('passwordInput');
@@ -205,8 +205,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const nickname = this.value.trim();
             if (!nickname) {
                 showError('nickname', 'nicknameError', '닉네임을 입력해주세요.');
-            } else if (nickname.length < 2) {
-                showError('nickname', 'nicknameError', '닉네임은 2자 이상이어야 합니다.');
+            } else if (nickname.length < 4) {
+                showError('nickname', 'nicknameError', '닉네임은 4자 이상이어야 합니다.');
             } else {
                 hideError('nickname', 'nicknameError');
             }
