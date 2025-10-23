@@ -138,9 +138,14 @@ function hidePassword(inputId, toggleId) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script loaded, checking page type...');
     const form = document.querySelector('form');
-    if (!form) return;
+    if (!form) {
+        console.log('No form found');
+        return;
+    }
     const isLoginPage = window.location.pathname.includes('sign-in.html');  // set the sign-in.html as a login page
+    console.log('isLoginPage:', isLoginPage, 'pathname:', window.location.pathname);
 
     const emailInput = document.getElementById('username');
     const passwordInput = document.getElementById('passwordInput');
@@ -152,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isLoginPage) {
         updateLoginButtonState();
     } else {
-        const submitButton = document.querySelector('button[type="submit"]');
+        const submitButton = document.getElementById('button[type="submit"]');
         if (submitButton) {
             submitButton.disabled = false;
             submitButton.style.opacity = '1';
