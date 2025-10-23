@@ -30,7 +30,7 @@ function updateLoginButtonState() {     //set the submit button on sign-in.html 
     if (Boolean(userid && passwd)) {
         const email = userid.value.trim();
         const password = passwd.value;
-        const enabled = email && password;  // enable when both fields have values
+        const enabled = !!(email && password);  // enable when both fields have values
 
         submitButton.disabled = !enabled;   //enabled = form is Valid
         submitButton.style.opacity = enabled ? '1' : '0.5'; //when the form is not valid, opacity set as half-transparency
