@@ -18,9 +18,23 @@ function hideError(inputId, errorId) {
     }
 }
 
+// Test user data
+const USER_DATA = [
+    { email: 'codeit1@codeit.com', password: "codeit101!" },
+    { email: 'codeit2@codeit.com', password: "codeit202!" },
+    { email: 'codeit3@codeit.com', password: "codeit303!" },
+    { email: 'codeit4@codeit.com', password: "codeit404!" },
+    { email: 'codeit5@codeit.com', password: "codeit505!" },
+    { email: 'codeit6@codeit.com', password: "codeit606!" },
+];
+
 function validateEmail(email) { //Email Validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+function checkLoginCredentials(email, password) {
+    return USER_DATA.find(user => user.email === email && user.password === password);
 }
 
 function updateLoginButtonState() {     //set the submit button on sign-in.html as disabled until input boxes are filled
@@ -168,13 +182,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Login form submit
     form.addEventListener('submit', function(e) {
-        const ok = isLoginPage ? validateLoginForm() : validateSignupForm();
-        if (!ok) {
-            e.preventDefault();
-            return;
-        }
         e.preventDefault();
-        window.location.href = isLoginPage ? './items.html' : '/';
+        
+        if (isLoginPage) {
+            // Validate form first
+            const isValid = validateLoginForm();
+            if (!isValid) {
+                return;
+            }
+            
+            // Check login credentials
+            const email = document.getElementById('username').value.trim();
+            const password = document.getElementById('passwordInput').value;
+            const user = checkLoginCredentials(email, password);
+            
+            if (user) {
+                // Login successful
+                alert('로그인 성공! 환영합니다.');
+                window.location.href = './items.html';
+            } else {
+                // Login failed
+                showError('passwordInput', 'passwordError', '이메일 또는 비밀번호가 올바르지 않습니다.');
+            }
+        } else {
+            // Sign-up form
+            const isValid = validateSignupForm();
+            if (isValid) {
+                window.location.href = '/';
+            }
+        }
     });
 
     if (emailInput) {
