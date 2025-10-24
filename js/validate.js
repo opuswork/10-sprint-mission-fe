@@ -40,6 +40,7 @@ function updateLoginButtonState() {     //set the submit button on sign-in.html 
     console.log('Button state:', { email, password, enabled, disabled: !enabled });
 
     submitButton.disabled = !enabled;   //enabled = form is Valid
+    submitButton.style.backgroundColor = !enabled ? '#888888' : '#3692ff';   //button color setting
     submitButton.style.opacity = enabled ? '1' : '0.5'; //when the form is not valid, opacity set as half-transparency
     submitButton.style.cursor = enabled ? 'pointer' : 'not-allowed';
 }
