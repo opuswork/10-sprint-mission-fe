@@ -247,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (passwordToggle) {
+        // Desktop events
         passwordToggle.addEventListener('mousedown', function() {
             showPassword('passwordInput', 'passwordToggle');
         });
@@ -256,9 +257,24 @@ document.addEventListener('DOMContentLoaded', function() {
         passwordToggle.addEventListener('mouseleave', function() {
             hidePassword('passwordInput', 'passwordToggle');
         });
+        
+        // Mobile touch events
+        passwordToggle.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            showPassword('passwordInput', 'passwordToggle');
+        });
+        passwordToggle.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            hidePassword('passwordInput', 'passwordToggle');
+        });
+        passwordToggle.addEventListener('touchcancel', function(e) {
+            e.preventDefault();
+            hidePassword('passwordInput', 'passwordToggle');
+        });
     }
 
     if (passwordConfirmToggle) {
+        // Desktop events
         passwordConfirmToggle.addEventListener('mousedown', function() {
             showPassword('passwordInput2', 'passwordConfirmToggle');
         });
@@ -266,6 +282,20 @@ document.addEventListener('DOMContentLoaded', function() {
             hidePassword('passwordInput2', 'passwordConfirmToggle');
         });
         passwordConfirmToggle.addEventListener('mouseleave', function() {
+            hidePassword('passwordInput2', 'passwordConfirmToggle');
+        });
+        
+        // Mobile touch events
+        passwordConfirmToggle.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            showPassword('passwordInput2', 'passwordConfirmToggle');
+        });
+        passwordConfirmToggle.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            hidePassword('passwordInput2', 'passwordConfirmToggle');
+        });
+        passwordConfirmToggle.addEventListener('touchcancel', function(e) {
+            e.preventDefault();
             hidePassword('passwordInput2', 'passwordConfirmToggle');
         });
     }
