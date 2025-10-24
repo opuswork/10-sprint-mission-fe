@@ -35,7 +35,7 @@ function updateLoginButtonState() {     //set the submit button on sign-in.html 
     
     const email = userid.value.trim();
     const password = passwd.value;
-    const enabled = !!(email && password);  // enable when both fields have values
+    const enabled = Boolean(email && password);  // enable when both fields have values
 
     console.log('Button state:', { email, password, enabled, disabled: !enabled });
 

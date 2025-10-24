@@ -242,7 +242,7 @@ button {
 
 
 
-/* Responsive - mobile adjustments */
+/* Responsive - tablet adjustments */
 @media (max-width: 743px) {
     /* Hero banner image scales to fit width and centers */
     .banner {
@@ -315,7 +315,7 @@ button {
     }
 }
 
-/* Specific adjustment when screen size is 500px or less */
+/* Specific adjustment when screen size is (mobile)500px or less */
 @media (max-width: 500px) {
     /* Center logo and login button side-by-side */
     header {
