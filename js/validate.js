@@ -33,8 +33,29 @@ function validateEmail(email) { //Email Validation
     return emailRegex.test(email);
 }
 
+//login credential check without back-end function
 function checkLoginCredentials(email, password) {
     return USER_DATA.find(user => user.email === email && user.password === password);
+}
+
+
+function findUserByCredential(email) {
+    return USER_DATA.find(user => user.email === email);
+}
+
+//Create Modal dialog show
+function showModal(message) {
+    const modal = document.getElementById('errorModal'); //modal box
+    const modalMessage = document.getElementById('modalMessage');   //error message
+    modalMessage.textContent = message;
+    modal.classList.add('show');
+}
+//Remove Modal dialog show
+function hideModal() {
+    const modal = document.getElementById('errorModal');  //modal box
+//    const modalMessage = document.getElementById('modalMessage');   //error message
+//    modalMessage.textContent = message;
+    modal.classList.remove('show');
 }
 
 function updateLoginButtonState() {     //set the submit button on sign-in.html as disabled until input boxes are filled
@@ -50,10 +71,11 @@ function updateLoginButtonState() {     //set the submit button on sign-in.html 
     const email = userid.value.trim();
     const password = passwd.value;
     const enabled = Boolean(email && password);  // enable when both fields have values
-
+// I need to search why is not working 
     console.log('Button state:', { email, password, enabled, disabled: !enabled });
 
-    submitButton.disabled = !enabled;   //enabled = form is Valid
+    Boolean(email && password) ? submitButton.disabled = false : submitButton.disabled = true;
+    //submitButton.disabled = !enabled;   //enabled = form is Valid
     submitButton.style.backgroundColor = !enabled ? '#888888' : '#3692ff';   //button color setting
     submitButton.style.opacity = enabled ? '1' : '0.5'; //when the form is not valid, opacity set as half-transparency
     submitButton.style.cursor = enabled ? 'pointer' : 'not-allowed';
@@ -170,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordConfirmInput = document.getElementById('passwordInput2');
 
     if (isLoginPage) {
-        updateLoginButtonState();
+        updateLoginButtonState();   //setting up Login button on Sin-in page 
     } else {
         const submitButton = document.querySelector('button[type="submit"]');
         if (submitButton) {
@@ -188,21 +210,26 @@ document.addEventListener('DOMContentLoaded', function() {
             // Validate form first
             const isValid = validateLoginForm();
             if (!isValid) {
-                return;
+                return false;
             }
             
             // Check login credentials
             const email = document.getElementById('username').value.trim();
             const password = document.getElementById('passwordInput').value;
-            const user = checkLoginCredentials(email, password);
             
-            if (user) {
-                // Login successful
-                alert('로그인 성공! 환영합니다.');
-                window.location.href = './items.html';
+            const user = findUserByCredential(email);
+            
+            if (!user) {
+                // Email not found
+                showModal('존재하지 않는 이메일 입니다.');
+                return false;
+            } else if (user.password !== password) {
+                // Password doesn't match
+                showModal('비밀번호가 일치하지 않습니다.');
+                return false;
             } else {
-                // Login failed
-                showError('passwordInput', 'passwordError', '이메일 또는 비밀번호가 올바르지 않습니다.');
+                // Login successful
+                window.location.href = './items.html';
             }
         } else {
             // Sign-up form
@@ -249,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if (!isLoginPage && nicknameInput) {
+    if (!isLoginPage && nicknameInput) {    //Sign-up form use only
         nicknameInput.addEventListener('blur', function() {
             const nickname = this.value.trim();
             if (!nickname) {
@@ -333,6 +360,22 @@ document.addEventListener('DOMContentLoaded', function() {
         passwordConfirmToggle.addEventListener('touchcancel', function(e) {
             e.preventDefault();
             hidePassword('passwordInput2', 'passwordConfirmToggle');
+        });
+    }
+
+    // Modal event listeners
+    const modal = document.getElementById('errorModal');
+    const modalOk = document.getElementById('modalOk');
+    
+    if (modalOk) {
+        modalOk.addEventListener('click', hideModal);
+    }
+    
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                hideModal();
+            }
         });
     }
 });
