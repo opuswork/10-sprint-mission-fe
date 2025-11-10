@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    color: #374151;
+    word-break: break-all;
+    font-family: "Pretendard", sans-serif;
+}
+
+:root {
+    /* Primary color */
+    --blue: #3692ff;
+    --header-height: 7rem;
+
+}
+
+
+.logo-container {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+
+
+.membership {
+    margin: 0 auto;
+    max-width: 640px;
+    color: #1F2937;
+    text-align: center;
+    gap: 6px;  
+    border: 0px solid #2c2c2c;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    font-family: 'Pretendard';
+    font-size: 14px;
+}
+
+.membership a {
+    color: #3182f6;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.socialLogin {
+    background-color: #E6F2FF;
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 640px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #1F2937;
+    padding: 16px 23px;
+}
+
+.social-login-button {
+  display: flex;
+  gap: 16px;
+}
+
+/* form CSS below */
+form {
+  margin: 16px auto;
+  max-width: 640px;
+}
+
+label {
+    font-weight: 700;
+    color: #2c2c2c;
+    display: block;
+    margin: 16px 0 20px;
+}
+
+input {
+    background-color: #F3F4F6;
+    border: 0px solid #d1d1d1;
+    color: #ababab;
+    display: block;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 8px 0;
+    padding: 16px 24px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.inputPWD {
+    position: relative;
+}
+
+.inputPWD .input {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Add paddings */
+    box-sizing: border-box; /* Include paddings and border to width */
+    border: 0px solid #F3F4F6;
+    outline: none;
+}
+
+
+input:focus {
+    /* border-color: #3692FF; */
+    outline-color: var(--blue);
+}
+
+.fa-eye {
+    position: absolute;
+    top: 50%; /* Vertical align center */
+    right: 10px; /* To locate 10px from the right wall */
+    transform: translateY(-50%); /* Additional attribute for perfect vertical central alignment */
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+button {
+  background: var(--blue);
+  border: none;
+  color: #ffffff;
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 24px 0;
+  padding: 16px;
+  width: 100%;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1967d6;
+}
+
+button:focus {
+  background-color: #1251aa;
+}
+
+/* 에러 상태 스타일 */
+input.error {
+  border: 2px solid #ef4444 !important;
+  background-color: #fef2f2;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  min-height: 20px;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+
+/* Responsive - tablet adjustments */
+@media (max-width: 1199px) {
+  .logo-container {
+      align-items: center;
+      margin-top: 60px;
+      margin-bottom: 60px;
+  }
+
+  img {
+    max-width: 80%;
+  }
+
+
+}
+
+
+
+/* Responsive - mobile adjustments */
+@media (max-width: 743px) {
+    .logo-container {
+        align-items: center;
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    img {
+      max-width: 50%;
+    }
+
+  .socialLogin {
+      background-color: #E6F2FF;
+      border-radius: 8px;
+      margin: 0 auto;
+      max-width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1F2937;
+      padding: 16px 23px;
+  }
+
+  /* form CSS below */
+  form {
+    margin: 16px auto;
+    max-width: 90%;
+  }
+
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px; /* max screen size */
+    max-height: 350px;  /* max screen size */
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+}
+
+
+.modal-content p {
+    margin-bottom: 25px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.modal-btn {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
