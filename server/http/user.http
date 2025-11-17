@@ -1,0 +1,33 @@
+GET http://localhost:3000/users
+
+###
+
+GET http://localhost:3000/users/b8f11e76-0a9e-4b3f-bccf-8d9b4fbf331e
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "maddison@example.com", 
+  "firstName": "James",
+  "lastName": "Madision",
+  "address": "5044 Madision Sq, New York, NY"
+}
+
+###
+
+PATCH http://localhost:3000/users/07f59ba5-563f-4c5d-8a85-4bc0af657c4b
+Content-Type: application/json
+
+{
+  "address": "6000 Madision Sq, New York, NY"
+}
+
+###
+
+DELETE http://localhost:3000/users/07f59ba5-563f-4c5d-8a85-4bc0af657c4b
+
+
+

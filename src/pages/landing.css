@@ -1,0 +1,205 @@
+/*
+* Styles for FS_10-React Sprint 5 Application
+* style for index.html
+* Description: Basic resets and global styles for the application
+* Author: Taeyoung Seon
+* Date: 11/6/2015 09:42 AM
+*/
+
+.wrapper {
+    color: black;
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 100%;
+    border: 0px solid red;
+}
+
+/*
+button for sign-in and out page
+*/
+button {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+/*
+pill-button for hero banner in landing page
+*/
+.pill-button {
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 99.9rem;
+    padding: 1.6rem 12.4rem;
+}
+
+.banner {
+    background-color: #cfe5ff;
+    height: 540px;
+    display: flex;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: 50% bottom;
+    background-size: 55%;
+}
+
+#hero {
+    background-image: url("/src/assets/banners/panda.svg");
+} 
+
+#features {
+    padding-bottom: 138px;
+}
+
+#bottomBanner {
+    background-image: url("/src/assets/banners/img_home_footer.svg");
+}
+
+.feature {
+    padding: 138px 0;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+.feature:nth-child(2) {
+    text-align: right;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+
+
+.banner .pill-button {
+    margin-top: 32px;
+}
+
+.feature-tag {
+    color: #3692ff;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.feature-description {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    margin-top: 24px;
+}
+
+/* Responsive - desktop adjustments */
+@media (max-width: 1199px) {
+    /* Hero banner image scales to fit width and centers */
+    .banner {
+        background-size: contain;
+        background-position: center bottom;
+    }
+
+
+    #hero {
+        background-image: url("/src/assets/banners/panda.svg");
+        background-size: auto;
+    } 
+
+    /* Center hero content; make h1 and pill-button half size */
+    .banner .wrapper {
+        text-align: center;
+    }
+
+    #hero h1 {
+        font-size: 2rem; /* approx half-sized heading on mobile */
+        
+    }
+
+    .banner .pill-button {
+        font-size: 2rem; /* half of 2rem */
+        padding: 0.1rem 6.2rem; /* half of 1.6rem 12.4rem */
+    }
+
+    /* Features: stack vertically, image first then text; image at 70% width */
+    .feature {
+        padding: 60px 0;
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .feature img {
+        width: 70%;
+        max-width: 70%;
+        order: 0;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .feature .feature-content {
+        order: 1;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Override the right alignment for the second feature on mobile */
+    .feature:nth-child(2) .feature-content {
+        text-align: center;
+    }
+
+
+}
+
+/* Responsive - tablet adjustments */
+@media (max-width: 743px) {
+    .banner {
+        background-size: contain;
+        background-position: center bottom;
+    }
+
+    .banner .wrapper {
+        text-align: center;
+    }
+
+    #hero h1 {
+        font-size: 1.6rem; /* approx half-sized heading on mobile */
+    }
+
+    .banner .pill-button {
+        font-size: 1rem; 
+        padding: 0.8rem 6.2rem; 
+    }
+
+    /* Features: stack vertically, image first then text; image at 70% width */
+    .feature {
+        padding: 60px 0;
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .feature img {
+        width: 70%;
+        max-width: 70%;
+        order: 0;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .feature .feature-content {
+        order: 1;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Override the right alignment for the second feature on mobile */
+    .feature:nth-child(2) .feature-content {
+        text-align: center;
+    }
+
+
+}
+
+
